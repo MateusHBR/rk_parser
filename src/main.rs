@@ -5,7 +5,8 @@ use std::{
     io::{BufRead, BufReader},
 };
 
-const ERROR_MESSAGE: &str = "FALHA AO CONVERTER LINHA";
+const COLUMNS: usize = 13;
+const ERROR_MESSAGE: &str = "FALHA_AO_CONVERTER_LINHA";
 const INPUT_FILE: &str = "input.txt";
 const OUTPUT_FILE: &str = "output.txt";
 
@@ -48,7 +49,7 @@ fn format(line: String) -> String {
     let splitted = splitted.as_slice();
 
     if let [code, tail @ ..] = splitted {
-        return format!("{:0>13}   {}", code, tail.join(" ").trim());
+        return format!("{:0>COLUMNS$}   {}", code, tail.join(" ").trim());
     }
 
     return line.to_string();
