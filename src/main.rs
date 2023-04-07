@@ -45,12 +45,11 @@ fn format(line: String) -> String {
         .split(" ")
         .map(|v| v.trim().to_string())
         .collect();
-
     let splitted = splitted.as_slice();
 
     if let [code, tail @ ..] = splitted {
         return format!("{:0>13}   {}", code, tail.join(" ").trim());
-    } else {
-        return line.to_string();
     }
+
+    return line.to_string();
 }
