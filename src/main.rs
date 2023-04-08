@@ -16,23 +16,23 @@ fn main() {
         .display()
         .to_string();
 
-    let file: File = File::open(format!("{current_dir}/{INPUT_FILE}"))
+    let input_file: File = File::open(format!("{current_dir}/{INPUT_FILE}"))
         .expect("Falha ao encontrar o arquivo especificado");
 
-    let reader = BufReader::new(&file);
+    let reader = BufReader::new(&input_file);
 
-    let mut result_file =
+    let mut output_file =
         File::create(format!("{current_dir}/{OUTPUT_FILE}")).expect("Falha ao criar o arquivo");
 
     reader
         .lines()
         .map(|line| line.unwrap_or(ERROR_MESSAGE.to_string()))
         .map(format)
-        .for_each(|line| write_in_file(line, &mut result_file));
+        .for_each(|line| write_line(line, &mut output_file));
 }
 
-fn write_in_file(line: String, file: &mut File) {
-    file.write_all(format!("{}\r", line).as_bytes())
+fn write_line(line: String, file: &mut File) {
+    file.write(format!("{}\r", line).as_bytes())
         .expect("Falha ao escrever no arquivo");
 }
 
