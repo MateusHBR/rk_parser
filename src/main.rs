@@ -2,6 +2,7 @@ use std::env;
 
 const INPUT_FILE: &str = "input.txt";
 const OUTPUT_FILE: &str = "output.txt";
+const COLUMNS: usize = 13;
 
 fn main() {
     let current_dir = env::current_dir()
@@ -12,5 +13,6 @@ fn main() {
     rk_parser::api::format_file(
         format!("{current_dir}/{INPUT_FILE}"),
         format!("{current_dir}/{OUTPUT_FILE}"),
+        COLUMNS,
     );
 }
