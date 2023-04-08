@@ -9,7 +9,7 @@ fn main() {
         .display()
         .to_string();
 
-    rk_parser::format_file(
+    rk_parser::api::format_file(
         format!("{current_dir}/{INPUT_FILE}"),
         format!("{current_dir}/{OUTPUT_FILE}"),
     );
